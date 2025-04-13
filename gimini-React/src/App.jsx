@@ -20,10 +20,10 @@ function App() {
   const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
   const generationConfig = {
-    maxOutputTokens: 5000,
-    temperature: 0.0,
-    topP: 0.0,
-    topK: 1,
+    maxOutputTokens: 8000,
+    temperature: 0.7, // Non-deterministic
+    topP: 0.9,
+    topK: 40,
   };
   const fetchData = async (prompt) => {
     const model = genAI.getGenerativeModel({
