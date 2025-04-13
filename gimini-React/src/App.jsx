@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 import "./App.css";
 import Typewriter from "./hooks/Typewriter";
+
 import {
   getTranscriptAnalysisPrompt,
   getNotesPrompt,
@@ -17,7 +19,6 @@ function App() {
   const [summaryData, setSummaryData] = useState(null);
 
   const [displayButtons, setDisplayButtons] = useState(false);
-
   const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
   const generationConfig = {
@@ -172,6 +173,7 @@ function App() {
       </div>
     </>
   );
+
   return (
     <div className="app-container">
       <div className="left-panel">

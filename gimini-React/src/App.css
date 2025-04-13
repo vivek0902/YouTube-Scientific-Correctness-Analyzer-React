@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 .app-container {
   display: flex;
@@ -338,4 +337,70 @@
 .summary-meta {
   font-size: 15px;
   color: #555;
+}
+
+/* Mobile-friendly Styles */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column; /* Stack the panels vertically */
+    height: auto; /* Allow content to flow */
+  }
+
+  .left-panel {
+    width: 100%; /* Full width on mobile */
+    height: auto; /* Adjust height */
+    position: relative; /* Remove sticky position for better flow */
+    border-right: none; /* Remove border */
+  }
+
+  .right-panel {
+    width: 100%; /* Full width on mobile */
+    margin-bottom: 20px; /* Space between panels */
+  }
+
+  .button-group {
+    position: relative; /* Make buttons flow with content */
+    bottom: unset; /* Remove fixed positioning */
+    width: 100%; /* Full width buttons */
+    justify-content: space-between; /* Distribute buttons evenly */
+  }
+
+  .button-container {
+    width: 48%; /* Allow buttons to take up more space */
+  }
+
+  .left-panel input[type="text"] {
+    padding: 15px; /* Adjust padding for mobile */
+  }
+
+  .left-panel button {
+    padding: 12px; /* Reduce button padding */
+    font-size: 14px; /* Adjust font size */
+  }
+
+  .right-panel h1,
+  .right-panel h3,
+  .right-panel p {
+    font-size: 18px; /* Adjust font size for readability */
+    margin-left: 10px; /* Reduce left margin */
+  }
+
+  .skeleton-container {
+    padding: 5px; /* Adjust padding for skeleton loader */
+  }
+
+  .skeleton.title {
+    width: 50%; /* Adjust width for mobile */
+    height: 20px; /* Adjust height */
+  }
+
+  .skeleton.heading {
+    width: 30%; /* Adjust width */
+    height: 18px; /* Adjust height */
+  }
+
+  .skeleton.text {
+    width: 80%; /* Adjust width */
+    height: 14px; /* Adjust height */
+  }
 }
