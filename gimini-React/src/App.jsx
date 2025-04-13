@@ -57,7 +57,7 @@ function App() {
     if (!videoId) throw new Error("Invalid YouTube URL");
 
     const response = await fetch(
-      `http://localhost:4000/transcript?videourl=${videourl}`
+      `https://youtube-scientific-correctness-analyzer.onrender.com/transcript?videourl=${videourl}`
     );
     if (!response.ok) throw new Error("Transcript not found.");
     const data = await response.json();
