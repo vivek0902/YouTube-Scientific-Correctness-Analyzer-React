@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Typewriter from "./hooks/Typewriter";
 import {
   getTranscriptAnalysisPrompt,
   getNotesPrompt,
@@ -230,11 +231,16 @@ function App() {
         {!loading && analysisData && (
           <div className="analysis-container">
             <h1 style={{ textAlign: "center" }}>Content Analysis</h1>
-            <h1 className="analysis-title">{analysisData.title}</h1>
+            <h1 className="analysis-title">
+              <Typewriter text={analysisData.title} speed={20} />
+            </h1>
 
             {analysisData.sections.map((section, sectionIndex) => (
               <div key={sectionIndex} className="analysis-section">
-                <h3 className="section-heading">{section.heading}</h3>
+                <h3 className="section-heading">
+                  {" "}
+                  <Typewriter text={section.heading} speed={20} />
+                </h3>
                 <ul className="points-list">
                   {section.points.map((point, pointIndex) => (
                     <li key={pointIndex} className="point-item">
@@ -243,11 +249,13 @@ function App() {
                           point.validity === "valid" ? "valid" : "invalid"
                         }`}
                       >
-                        <b>({point.validity})</b> {point.text}
+                        <b>({point.validity})</b>{" "}
+                        <Typewriter text={point.text} speed={20} />
                       </p>
                       {point.validity === "invalid" && (
                         <p className="explanation">
-                          <b>Explanation:</b> {point.explanation}
+                          <b>Explanation:</b>{" "}
+                          <Typewriter text={point.explanation} speed={20} />
                         </p>
                       )}
                     </li>
@@ -262,18 +270,26 @@ function App() {
           <div className="notes-container">
             <h1 style={{ textAlign: "center" }}>Content Notes</h1>
 
-            <h1 className="notes-title">{notesData.title}</h1>
+            <h1 className="notes-title">
+              <Typewriter text={notesData.title} speed={20} />
+            </h1>
 
             {notesData.sections.map((section, sectionIndex) => (
               <div key={sectionIndex} className="notes-section">
-                <h3 className="section-heading">{section.heading}</h3>
+                <h3 className="section-heading">
+                  {" "}
+                  <Typewriter text={section.heading} speed={20} />
+                </h3>
                 <ul className="points-list">
                   {section.points.map((point, pointIndex) => (
                     <li key={pointIndex} className="point-item">
-                      <p className="point-text valid">{point.text}</p>
+                      <p className="point-text valid">
+                        <Typewriter text={point.text} speed={20} />
+                      </p>
                       {point.explanation && (
                         <p className="explanation">
-                          Explanation: {point.explanation}
+                          Explanation:{" "}
+                          <Typewriter text={point.explanation} speed={20} />
                         </p>
                       )}
                     </li>
@@ -288,11 +304,15 @@ function App() {
           <div className="summary-container">
             <h1 style={{ textAlign: "center" }}>Content Summary</h1>
 
-            <h1 className="summary-title">{summaryData.title}</h1>
+            <h1 className="summary-title">
+              <Typewriter text={summaryData.title} speed={20} />
+            </h1>
 
             <div className="summary-section">
               <h3 className="section-heading">Summary</h3>
-              <p className="summary-text">{summaryData.summary}</p>
+              <p className="summary-text">
+                <Typewriter text={summaryData.summary} speed={20} />
+              </p>
             </div>
 
             <div className="summary-section">
@@ -300,7 +320,7 @@ function App() {
               <ul className="keypoints-list">
                 {summaryData.keyPoints.map((keyPoint, index) => (
                   <li key={index} className="keypoint-item">
-                    {keyPoint}
+                    <Typewriter text={keyPoint} speed={20} />
                   </li>
                 ))}
               </ul>
@@ -308,17 +328,23 @@ function App() {
 
             <div className="summary-section">
               <h3 className="section-heading">Target Audience</h3>
-              <p className="summary-meta">{summaryData.targetAudience}</p>
+              <p className="summary-meta">
+                <Typewriter text={summaryData.targetAudience} speed={20} />
+              </p>
             </div>
 
             <div className="summary-section">
               <h3 className="section-heading">Application</h3>
-              <p className="summary-meta">{summaryData.application}</p>
+              <p className="summary-meta">
+                <Typewriter text={summaryData.application} speed={20} />
+              </p>
             </div>
 
             <div className="summary-section">
               <h3 className="section-heading">Tone</h3>
-              <p className="summary-meta">{summaryData.tone}</p>
+              <p className="summary-meta">
+                <Typewriter text={summaryData.tone} speed={20} />
+              </p>
             </div>
           </div>
         )}
