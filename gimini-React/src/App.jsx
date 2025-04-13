@@ -67,7 +67,18 @@ function App() {
   };
   const handleTranscriptUrl = async (e) => {
     e.preventDefault();
-    if (videourl === "") return;
+    if (videourl === "") {
+      alert("Please enter a YouTube URL.");
+      setVideourl("");
+      return;
+    }
+
+    const videoId = getYoutubeVideoId(videourl);
+    if (!videoId) {
+      alert("Invalid YouTube URL. Please enter a correct one.");
+      setVideourl("");
+      return;
+    }
     setLoading(true);
     setAnalysisData(null);
     setNotesData(null);
@@ -81,6 +92,7 @@ function App() {
       setAnalysisData(fetchedData);
     } catch (err) {
       console.error("Error fetching transcript or generating analysis:", err);
+      alert("Failed to fetch transcript or analyze content. Please try again.");
     } finally {
       setLoading(false);
     }
